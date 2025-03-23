@@ -77,7 +77,7 @@ const FortuneWheel = ({ teamMembers }: FortuneWheelProps) => {
       <Box
         sx={{
           position: 'absolute',
-          top: -20,
+          top: -10,
           left: '50%',
           transform: 'translateX(-50%)',
           width: 0,
@@ -144,7 +144,7 @@ const FortuneWheel = ({ teamMembers }: FortuneWheelProps) => {
               <g key={index}>
                 <path
                   d={pathData}
-                  fill={index % 2 === 0 ? '#f0f0f0' : 'transparent'}
+                  fill={index === 0 ? '#fffccf' : 'transparent'}
                   stroke="white"
                   strokeWidth="1"
                 />
