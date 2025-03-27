@@ -46,4 +46,4 @@ export const takeScreenshot = async () => {
   } catch (err) {
     console.error('Error taking screenshot:', err);
   }
-}; 
+};

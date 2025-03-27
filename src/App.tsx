@@ -17,7 +17,6 @@ export interface TeamMember {
   color: string
 }
 
-// Interface for spin statistics
 export interface SpinStats {
   count: number
   lastSpinTime: string | null
