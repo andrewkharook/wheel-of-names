@@ -16,6 +16,12 @@ export interface TeamMember {
   color: string
 }
 
+// Interface for spin statistics
+export interface SpinStats {
+  count: number
+  lastSpinTime: string | null
+}
+
 const defaultTeamMembers: TeamMember[] = [
   { id: '1', name: 'Наташа', color: 'hsl(0, 70%, 80%)' },
   { id: '2', name: 'Аліса', color: 'hsl(36, 70%, 80%)' },
@@ -31,6 +37,7 @@ const defaultTeamMembers: TeamMember[] = [
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'wheel' | 'settings'>('wheel')
+  const [spinStats, setSpinStats] = useState<SpinStats>({ count: 0, lastSpinTime: null })
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>(() => {
     const saved = localStorage.getItem('teamMembers')
     return saved ? JSON.parse(saved) : defaultTeamMembers
@@ -42,13 +49,24 @@ function App() {
     setCurrentPage('wheel')
   }
 
+  const handleSpinComplete = () => {
+    const newStats = {
+      count: spinStats.count + 1,
+      lastSpinTime: new Date().toLocaleString('uk-UA')
+    }
+    setSpinStats(newStats)
+    localStorage.setItem('spinStats', JSON.stringify(newStats))
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {currentPage === 'wheel' ? (
         <WheelPage
           teamMembers={teamMembers}
+          spinStats={spinStats}
           onSettingsClick={() => setCurrentPage('settings')}
+          onSpinComplete={handleSpinComplete}
         />
       ) : (
         <SettingsPage

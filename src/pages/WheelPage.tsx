@@ -1,14 +1,16 @@
-import { Box, IconButton } from '@mui/material';
+import { Box, IconButton, Typography } from '@mui/material';
 import { Settings as SettingsIcon } from '@mui/icons-material';
-import { TeamMember } from '../App';
+import { TeamMember, SpinStats } from '../App';
 import FortuneWheel from '../components/FortuneWheel';
 
 interface WheelPageProps {
   teamMembers: TeamMember[];
+  spinStats: SpinStats;
   onSettingsClick: () => void;
+  onSpinComplete: () => void;
 }
 
-const WheelPage = ({ teamMembers, onSettingsClick }: WheelPageProps) => {
+const WheelPage = ({ teamMembers, spinStats, onSettingsClick, onSpinComplete }: WheelPageProps) => {
   return (
     <Box
       sx={{
@@ -31,8 +33,25 @@ const WheelPage = ({ teamMembers, onSettingsClick }: WheelPageProps) => {
       >
         <SettingsIcon />
       </IconButton>
-      
-      <FortuneWheel teamMembers={teamMembers} />
+
+      <FortuneWheel teamMembers={teamMembers} onSpinComplete={onSpinComplete} />
+
+      {spinStats.count > 0 && (
+        <Box
+          sx={{
+            position: 'absolute',
+            bottom: 50,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 1
+          }}
+        >
+          <Typography variant="caption" color="text.secondary">
+            Кількість запусків: {spinStats.count} / Останній запуск: {spinStats.lastSpinTime}
+          </Typography>
+        </Box>
+      )}
     </Box>
   );
 };
