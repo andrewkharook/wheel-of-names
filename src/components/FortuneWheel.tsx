@@ -4,9 +4,10 @@ import { TeamMember } from '../App';
 
 interface FortuneWheelProps {
   teamMembers: TeamMember[];
+  onSpinComplete: () => void;
 }
 
-const FortuneWheel = ({ teamMembers }: FortuneWheelProps) => {
+const FortuneWheel = ({ teamMembers, onSpinComplete }: FortuneWheelProps) => {
   const [isSpinning, setIsSpinning] = useState(false);
   const [innerRotation, setInnerRotation] = useState(0);
   const [outerRotation, setOuterRotation] = useState(0);
@@ -34,6 +35,7 @@ const FortuneWheel = ({ teamMembers }: FortuneWheelProps) => {
     setTimeout(() => {
       setIsSpinning(false);
       console.log('Selected:', teamMembers[selectedIndex].name);
+      onSpinComplete();
     }, 5000);
   };
 
