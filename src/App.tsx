@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material'
 import WheelPage from './pages/WheelPage'
 import SettingsPage from './pages/SettingsPage'
+import { takeScreenshot } from './utils/screenshot'
 import './App.css'
 
 const theme = createTheme({
@@ -16,7 +17,6 @@ export interface TeamMember {
   color: string
 }
 
-// Interface for spin statistics
 export interface SpinStats {
   count: number
   lastSpinTime: string | null
@@ -67,6 +67,7 @@ function App() {
           spinStats={spinStats}
           onSettingsClick={() => setCurrentPage('settings')}
           onSpinComplete={handleSpinComplete}
+          onScreenshot={takeScreenshot}
         />
       ) : (
         <SettingsPage
