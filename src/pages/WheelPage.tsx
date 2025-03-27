@@ -1,14 +1,15 @@
 import { Box, IconButton } from '@mui/material';
-import { Settings as SettingsIcon } from '@mui/icons-material';
+import { Settings as SettingsIcon, CameraAlt as CameraIcon } from '@mui/icons-material';
 import { TeamMember } from '../App';
 import FortuneWheel from '../components/FortuneWheel';
 
 interface WheelPageProps {
   teamMembers: TeamMember[];
   onSettingsClick: () => void;
+  onScreenshot: () => void;
 }
 
-const WheelPage = ({ teamMembers, onSettingsClick }: WheelPageProps) => {
+const WheelPage = ({ teamMembers, onSettingsClick, onScreenshot }: WheelPageProps) => {
   return (
     <Box
       sx={{
@@ -21,16 +22,23 @@ const WheelPage = ({ teamMembers, onSettingsClick }: WheelPageProps) => {
         bgcolor: '#f5f5f5',
       }}
     >
-      <IconButton
-        onClick={onSettingsClick}
+      <Box
         sx={{
           position: 'absolute',
           top: 16,
           right: 16,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1,
         }}
       >
-        <SettingsIcon />
-      </IconButton>
+        <IconButton onClick={onSettingsClick}>
+          <SettingsIcon />
+        </IconButton>
+        <IconButton onClick={onScreenshot}>
+          <CameraIcon />
+        </IconButton>
+      </Box>
       
       <FortuneWheel teamMembers={teamMembers} />
     </Box>

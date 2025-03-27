@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { ThemeProvider, CssBaseline, createTheme } from '@mui/material'
 import WheelPage from './pages/WheelPage'
 import SettingsPage from './pages/SettingsPage'
+import { takeScreenshot } from './utils/screenshot'
 import './App.css'
 
 const theme = createTheme({
@@ -49,6 +50,7 @@ function App() {
         <WheelPage
           teamMembers={teamMembers}
           onSettingsClick={() => setCurrentPage('settings')}
+          onScreenshot={takeScreenshot}
         />
       ) : (
         <SettingsPage
