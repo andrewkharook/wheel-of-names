@@ -3,7 +3,7 @@ export const takeScreenshot = async () => {
     const stream = await navigator.mediaDevices.getDisplayMedia({ 
       preferCurrentTab: true,
       video: { 
-        // @ts-ignore - mediaSource is a valid property for getDisplayMedia
+        // @ts-expect-error - mediaSource is a valid property for getDisplayMedia
         mediaSource: 'screen' 
       }
     });
