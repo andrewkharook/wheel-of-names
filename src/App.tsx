@@ -23,7 +23,7 @@ export interface SpinStats {
 }
 
 const defaultTeamMembers: TeamMember[] = [
-  { id: '1', name: 'Наташа', color: 'hsl(0, 70%, 80%)' },
+  { id: '1', name: 'Наташа', color: 'hsl(20, 70%, 80%)' },
   { id: '2', name: 'Аліса', color: 'hsl(36, 70%, 80%)' },
   { id: '3', name: 'Андрій', color: 'hsl(72, 70%, 80%)' },
   { id: '4', name: 'Тарас', color: 'hsl(108, 70%, 80%)' },
@@ -33,6 +33,7 @@ const defaultTeamMembers: TeamMember[] = [
   { id: '8', name: 'Вітя', color: 'hsl(252, 70%, 80%)' },
   { id: '9', name: 'Антон', color: 'hsl(288, 70%, 80%)' },
   { id: '10', name: 'Ед', color: 'hsl(324, 70%, 80%)' },
+  { id: '11', name: 'Влад', color: 'hsl(0, 70%, 80%)' },
 ]
 
 function App() {
